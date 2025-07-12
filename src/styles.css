@@ -1,0 +1,28 @@
+.quiz-page, .home-page, .result-page {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+  }
+  .option {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    margin: 0.25rem 0;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .option.selected { background: #f0f0ff; }
+  .option.correct { background: #d4fcd4; }
+  .option.wrong { background: #fdd; }
+  .progress-bar {
+    background: #eee;
+    border-radius: 8px;
+    height: 10px;
+    margin-bottom: 1rem;
+  }
+  .fill {
+    height: 10px;
+    background: #4f46e5;
+    border-radius: 8px;
+  }

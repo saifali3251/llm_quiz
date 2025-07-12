@@ -1,0 +1,152 @@
+/* globals.css - Add this to your main CSS file */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 262.1 83.3% 57.8%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 262.1 83.3% 57.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom component styles */
+@layer components {
+  .select-dropdown {
+    @apply absolute top-full left-0 right-0 z-50 mt-1 bg-white border border-gray-200 rounded-md shadow-lg max-h-60 overflow-auto;
+  }
+  
+  .select-item {
+    @apply relative flex w-full cursor-pointer select-none items-center rounded-sm py-2 pl-8 pr-2 text-sm outline-none hover:bg-gray-100 focus:bg-gray-100;
+  }
+  
+  .radio-indicator {
+    @apply absolute inset-0 flex items-center justify-center;
+  }
+  
+  .radio-dot {
+    @apply h-2 w-2 rounded-full bg-white;
+  }
+}
+
+/* Additional utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* Custom Friends Quiz specific styles */
+.friends-quiz-container {
+  background: linear-gradient(135deg, #f5f3ff 0%, #e0e7ff 50%, #c7d2fe 100%);
+  min-height: 100vh;
+}
+
+.friends-quiz-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.friends-quiz-button {
+  background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+  transition: all 0.3s ease;
+}
+
+.friends-quiz-button:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.friends-quiz-progress {
+  background: linear-gradient(90deg, #8b5cf6 0%, #3b82f6 100%);
+  transition: width 0.3s ease;
+}
+
+.difficulty-easy {
+  @apply text-green-600 bg-green-50 border border-green-200;
+}
+
+.difficulty-medium {
+  @apply text-yellow-600 bg-yellow-50 border border-yellow-200;
+}
+
+.difficulty-hard {
+  @apply text-red-600 bg-red-50 border border-red-200;
+}
+
+.character-badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium;
+}
+
+.season-badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium text-blue-600 bg-blue-50;
+}
+
+.loading-spinner {
+  @apply w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin;
+}

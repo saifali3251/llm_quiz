@@ -1,0 +1,97 @@
+// Logo.jsx
+import React from 'react';
+
+const Logo = ({ size = 50, className = '' }) => {
+  return (
+    <svg 
+      width={size} 
+      height={size} 
+      viewBox="0 0 200 200" 
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      {/* Background circle */}
+      <circle cx="100" cy="100" r="90" fill="url(#bgGradient)" stroke="#2563eb" strokeWidth="4"/>
+      
+      {/* Gradient definitions */}
+      <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor:'#3b82f6', stopOpacity:1}} />
+          <stop offset="100%" style={{stopColor:'#1e40af', stopOpacity:1}} />
+        </linearGradient>
+        <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style={{stopColor:'#fbbf24', stopOpacity:1}} />
+          <stop offset="100%" style={{stopColor:'#f59e0b', stopOpacity:1}} />
+        </linearGradient>
+      </defs>
+      
+      {/* Brain/AI representation */}
+      <g transform="translate(100, 70)">
+        {/* Brain outline */}
+        <path d="M-25,-20 C-30,-25 -30,-35 -20,-35 C-10,-40 10,-40 20,-35 C30,-35 30,-25 25,-20 C25,-10 20,0 15,5 C10,10 5,10 0,8 C-5,10 -10,10 -15,5 C-20,0 -25,-10 -25,-20 Z" 
+              fill="url(#brainGradient)" stroke="#f59e0b" strokeWidth="2"/>
+        
+        {/* Neural network nodes */}
+        <circle cx="-15" cy="-15" r="3" fill="#ffffff" opacity="0.9"/>
+        <circle cx="0" cy="-20" r="3" fill="#ffffff" opacity="0.9"/>
+        <circle cx="15" cy="-15" r="3" fill="#ffffff" opacity="0.9"/>
+        <circle cx="-10" cy="-5" r="3" fill="#ffffff" opacity="0.9"/>
+        <circle cx="10" cy="-5" r="3" fill="#ffffff" opacity="0.9"/>
+        <circle cx="0" cy="0" r="3" fill="#ffffff" opacity="0.9"/>
+        
+        {/* Neural connections */}
+        <g stroke="#ffffff" strokeWidth="1.5" opacity="0.6" fill="none">
+          <line x1="-15" y1="-15" x2="-10" y2="-5"/>
+          <line x1="0" y1="-20" x2="-10" y2="-5"/>
+          <line x1="0" y1="-20" x2="10" y2="-5"/>
+          <line x1="15" y1="-15" x2="10" y2="-5"/>
+          <line x1="-10" y1="-5" x2="0" y2="0"/>
+          <line x1="10" y1="-5" x2="0" y2="0"/>
+        </g>
+      </g>
+      
+      {/* Quiz elements */}
+      <g transform="translate(100, 130)">
+        {/* Question mark */}
+        <circle cx="0" cy="0" r="25" fill="#ffffff" stroke="#e5e7eb" strokeWidth="2"/>
+        <text x="0" y="8" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="24" fontWeight="bold" fill="#2563eb">?</text>
+      </g>
+      
+      {/* Multiple choice indicators */}
+      <g transform="translate(60, 130)">
+        <rect x="-8" y="-8" width="16" height="16" rx="2" fill="#10b981" stroke="#ffffff" strokeWidth="2"/>
+        <text x="0" y="4" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="10" fontWeight="bold" fill="#ffffff">A</text>
+      </g>
+      
+      <g transform="translate(140, 130)">
+        <rect x="-8" y="-8" width="16" height="16" rx="2" fill="#ef4444" stroke="#ffffff" strokeWidth="2"/>
+        <text x="0" y="4" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="10" fontWeight="bold" fill="#ffffff">B</text>
+      </g>
+      
+      <g transform="translate(80, 155)">
+        <rect x="-8" y="-8" width="16" height="16" rx="2" fill="#8b5cf6" stroke="#ffffff" strokeWidth="2"/>
+        <text x="0" y="4" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="10" fontWeight="bold" fill="#ffffff">C</text>
+      </g>
+      
+      <g transform="translate(120, 155)">
+        <rect x="-8" y="-8" width="16" height="16" rx="2" fill="#f59e0b" stroke="#ffffff" strokeWidth="2"/>
+        <text x="0" y="4" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="10" fontWeight="bold" fill="#ffffff">D</text>
+      </g>
+      
+      {/* Sparkle effects */}
+      <g opacity="0.7">
+        <path d="M40,40 L42,46 L48,44 L42,50 L40,56 L38,50 L32,44 L38,46 Z" fill="#fbbf24"/>
+        <path d="M160,50 L161,54 L165,53 L161,57 L160,61 L159,57 L155,53 L159,54 Z" fill="#fbbf24"/>
+        <path d="M170,160 L171,164 L175,163 L171,167 L170,171 L169,167 L165,163 L169,164 Z" fill="#fbbf24"/>
+        <path d="M30,160 L31,164 L35,163 L31,167 L30,171 L29,167 L25,163 L29,164 Z" fill="#fbbf24"/>
+      </g>
+    </svg>
+  );
+};
+
+export default Logo;
+
+// Usage examples:
+// <Logo size={40} />
+// <Logo size={100} className="my-logo-class" />
+// <Logo size={200} className="hover:scale-105 transition-transform" />
