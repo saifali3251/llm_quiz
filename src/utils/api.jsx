@@ -1,6 +1,27 @@
-import { API_BASE_URL,API_KEY } from "../config";
+import {API_KEY } from "../config";
 
-console.log(API_BASE_URL)
+const API_BASE_URL = process.env.REACT_APP_API_URL || "https://genai-endpoints.up.railway.app";
+
+console.log(API_BASE_URL,API_KEY)
+
+export const validateApiKey = async (api_key,model_name) => {
+  console.log(api_key,model_name)
+  const response = await fetch(`${API_BASE_URL}/validate-api-key`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ model_name:model_name, api_key: api_key }),
+  });
+  
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  
+  return await response.json();
+};
+
+
 export const fetchQuestions = async (prompt,modelName,contentName,contentType,is_test) => {
   try {
     const response = await fetch(`${API_BASE_URL}/generate-questions/`, {

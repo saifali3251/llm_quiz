@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { CheckCircle, XCircle, Loader2, Eye, EyeOff, Brain, Zap, Key, ChevronDown, AlertCircle, Server, ExternalLink } from 'lucide-react';
 import { models } from '../lib/utils';
-import { API_BASE_URL } from '../config';
+// import { API_BASE_URL } from '../config';
+import { validateApiKey } from '../utils/api';
+
 
 const QuizLandingPage = () => {
   const [selectedModel, setSelectedModel] = useState('gemini');
@@ -21,7 +23,7 @@ const QuizLandingPage = () => {
   const debounceValidation = useCallback(
     debounce((key, model) => {
       if (key.length > 10) {
-        validateApiKey(key, model);
+        validateApiKeyHandler(key, model);
       }
     }, 1000),
     []
@@ -39,7 +41,7 @@ const QuizLandingPage = () => {
     if (savedKey) {
       setApiKey(savedKey);
       if (selectedModelData?.apiKeyRequired) {
-        validateApiKey(savedKey, selectedModel);
+        validateApiKeyHandler(savedKey, selectedModel);
       }
     }
   }, []);
@@ -80,7 +82,7 @@ const QuizLandingPage = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const validateApiKey = async (key, model) => {
+  const validateApiKeyHandler = async (key, model) => {
     if (!key.trim()) {
       setValidationState('');
       return;
@@ -90,20 +92,10 @@ const QuizLandingPage = () => {
     setValidationState('loading');
 
     try {
-      const response = await fetch(`${API_BASE_URL}/validate-api-key`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          api_key: key,
-          model_name: model
-        })
-      });
+      const result = await validateApiKey(key,model)
+      console.log(result)
 
-      const result = await response.json();
-
-      if (response.ok && result.valid) {
+      if (result.valid) {
         setValidationState('success');
         setErrorMessage('');
         return true;
@@ -153,7 +145,7 @@ const QuizLandingPage = () => {
     setIsSubmitting(true);
 
     try {
-      const isValid = await validateApiKey(apiKey, selectedModel);
+      const isValid = await validateApiKeyHandler(apiKey, selectedModel);
 
       if (isValid) {
         // Store both model and API key
