@@ -3,12 +3,12 @@
   "name": "LLM Quiz App - Test Your Knowledge with AI",
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     },
@@ -18,7 +18,7 @@
       "type": "image/x-icon"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#4f46e5",
   "background_color": "#ffffff"
