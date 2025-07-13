@@ -1,5 +1,4 @@
-import { backend_url } from "../lib/utils";
-import { API_BASE_URL,API_KEY,MODEL_NAME } from "../config";
+import { API_BASE_URL,API_KEY } from "../config";
 
 console.log(API_BASE_URL)
 export const fetchQuestions = async (prompt,modelName,contentName,contentType,is_test) => {

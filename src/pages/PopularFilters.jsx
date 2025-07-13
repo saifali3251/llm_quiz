@@ -1,12 +1,12 @@
 import { useState,useEffect } from 'react';
-import { ChevronRight, Users, TrendingUp, Settings, ArrowLeft, Star, Play } from 'lucide-react';
-import { defaultSelection } from '../lib/utils';
+import { TrendingUp, Star, Play } from 'lucide-react';
+// import { defaultSelection } from '../lib/utils';
 import { fetchPopularFilters } from '../utils/api';
 
 const PopularFiltersSection = ({startPopularChoiceHandler}) => {
   // Popular filter section
-  const [selectedModel, setSelectedModel] = useState('');
-  const [filters, setFilters] = useState(defaultSelection);
+  // const [selectedModel, setSelectedModel] = useState('');
+  // const [filters, setFilters] = useState(defaultSelection);
   const [currentView, setCurrentView] = useState('filters');
   const [popularFilters, setPopularFilters] = useState([]);
   const [loadingPopular, setLoadingPopular] = useState(false);
@@ -25,17 +25,17 @@ const PopularFiltersSection = ({startPopularChoiceHandler}) => {
     }
   }, [currentView]);
 
-  const handleModelSelect = (modelId) => {
-    setSelectedModel(modelId);
-    setCurrentView('filters');
-  };
+  // const handleModelSelect = (modelId) => {
+  //   setSelectedModel(modelId);
+  //   setCurrentView('filters');
+  // };
 
   const handlePopularFilterClick = (popularFilter) => {
     // Set filters based on popular selection
-    setFilters({
-      type: popularFilter.type,
-      genre: popularFilter.name,
-    });
+    // setFilters({
+    //   type: popularFilter.type,
+    //   genre: popularFilter.name,
+    // });
 
     startPopularChoiceHandler(popularFilter)
     

@@ -1,12 +1,9 @@
-import { useEffect, useState } from 'react';
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from './items/select';
-import { RadioGroup, RadioGroupItem } from './items/radio-group';
-import { Label } from './items/label';
-import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from './items/card';
+import { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from './items/card';
 import { Button } from './items/Button';
 import { fetchQuestions } from '../utils/api';
 import { generateLLMPrompt, validatePrompt } from '../utils/prompts';
-import { defaultSelection,getContentType,getDifficultyColor,getScoreMessage,randomTopicList,difficultyOptions,contentType } from '../lib/utils';
+import { defaultSelection,getDifficultyColor,getScoreMessage,randomTopicList } from '../lib/utils';
 import PopularFiltersSection from '../pages/PopularFilters';
 import ChangeModelButton from './items/ChangeModelButton';
 import UtilityButtons from './items/DeveloperProfile';
@@ -14,8 +11,6 @@ import QuestionList from './QuestionList';
 import FilterSelection from './FilterSelection';
 import ActionButtons from './ActionButtons';
 
-// const difficultyOptions = ['All', 'Easy', 'Medium', 'Hard'];
-// const contentType = ["Movie","TV Show","Web Series","Documentary","Book","General Knowledge"]
 const modelName = sessionStorage.getItem("selectedModel")
 export default function FriendsQuizLLM() {
   const [questions, setQuestions] = useState([]);
@@ -32,6 +27,8 @@ export default function FriendsQuizLLM() {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [filters, setFilters] = useState(defaultSelection);
   const [similarNamesQuiz, setSimilarNamesQuiz] = useState(false);
+
+  console.log(similarNamesQuiz)
 
   // // Popular filter section
   // const [selectedModel, setSelectedModel] = useState('');

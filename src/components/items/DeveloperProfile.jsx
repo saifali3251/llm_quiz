@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Coffee, User, Heart, Github, Linkedin, Twitter, X,Code2,TerminalSquare,LampDesk } from 'lucide-react';
+import { User, Heart, Github, Linkedin, X,TerminalSquare } from 'lucide-react';
 
 const UtilityButtons = () => {
   const [showDeveloperModal, setShowDeveloperModal] = useState(false);

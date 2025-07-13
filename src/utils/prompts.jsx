@@ -1,6 +1,6 @@
 // Enhanced prompt generator with dynamic templates for different content types
 export const generateLLMPrompt = (filters) => {
-  const { type, name, difficulty, questionCount, season, character } = filters;
+  const { type, name, difficulty, questionCount } = filters;
   
   // Base prompt structure
   let prompt = `You are an expert quiz creator specializing in ${type} trivia. `;
@@ -202,7 +202,7 @@ const getDifficultyInstructions = (difficulty, contentType) => {
 
 // Common formatting instructions
 const getFormattingInstructions = (filters) => {
-  const { type, difficulty, season, character } = filters;
+  const { difficulty, season, character } = filters;
   
   let instructions = `\nIMPORTANT FORMATTING REQUIREMENTS:
   
