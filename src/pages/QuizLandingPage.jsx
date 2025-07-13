@@ -4,7 +4,6 @@ import { models } from '../lib/utils';
 // import { API_BASE_URL } from '../config';
 import { validateApiKey } from '../utils/api';
 
-
 const QuizLandingPage = () => {
   const [selectedModel, setSelectedModel] = useState('gemini');
   const [apiKey, setApiKey] = useState('');
@@ -93,7 +92,6 @@ const QuizLandingPage = () => {
 
     try {
       const result = await validateApiKey(key,model)
-      console.log(result)
 
       if (result.valid) {
         setValidationState('success');
@@ -105,7 +103,6 @@ const QuizLandingPage = () => {
         return false;
       }
     } catch (error) {
-      console.error('Validation error:', error);
       setValidationState('error');
       setErrorMessage('Unable to validate API key. Please check your connection.');
       return false;

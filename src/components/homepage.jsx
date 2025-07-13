@@ -28,62 +28,6 @@ export default function FriendsQuizLLM() {
   const [filters, setFilters] = useState(defaultSelection);
   const [similarNamesQuiz, setSimilarNamesQuiz] = useState(false);
 
-  console.log(similarNamesQuiz)
-
-  // // Popular filter section
-  // const [selectedModel, setSelectedModel] = useState('');
-  // const [currentView, setCurrentView] = useState('landing');
-  // const [popularFilters, setPopularFilters] = useState([]);
-  // const [loadingPopular, setLoadingPopular] = useState(false);
-
-  // const fetchPopularFilters = async () => {
-  //   setLoadingPopular(true);
-  //   // Simulate API call
-  //   setTimeout(() => {
-  //     const mockData = [
-  //       { type: "TV Show", name: "Friends", model_name: "mistral", hits: 5 },
-  //       { type: "TV Show", name: "Friends", model_name: "gemini", hits: 3 },
-  //       { type: "Movie", name: "The Matrix", model_name: "openai", hits: 7 },
-  //       { type: "Movie", name: "Inception", model_name: "claude", hits: 4 },
-  //       { type: "TV Show", name: "Breaking Bad", model_name: "mistral", hits: 6 }
-  //     ];
-  //     setPopularFilters(mockData);
-  //     setLoadingPopular(false);
-  //   }, 1000);
-  // };
-
-  // useEffect(() => {
-  //   if (currentView === 'filters') {
-  //     fetchPopularFilters();
-  //   }
-  // }, [currentView]);
-
-  // const handleModelSelect = (modelId) => {
-  //   setSelectedModel(modelId);
-  //   setCurrentView('filters');
-  // };
-
-  // const handlePopularFilterClick = (popularFilter) => {
-  //   // Set filters based on popular selection
-  //   setFilters({
-  //     type: popularFilter.type,
-  //     genre: popularFilter.name,
-  //     year: '',
-  //     rating: ''
-  //   });
-    
-  //   // Start quiz with popular filter
-  //   setCurrentView('quiz');
-  // };
-
-
-
-
-
-  // // ppular filter section ends here
-
-
-
 
   // Event handlers
   const handleFilterChange = (key, value) => {
@@ -100,7 +44,7 @@ export default function FriendsQuizLLM() {
       const response = await fetchQuestions(validationPrompt,modelName,contentName,contentType,is_test);
       return response;
     } catch (error) {
-      console.error('Content validation error:', error);
+      // console.error('Content validation error:', error);
       return { exists: true }; // Fallback to allow quiz generation
     }
   };
@@ -193,7 +137,7 @@ export default function FriendsQuizLLM() {
         setShowFeedback(false);
       }
     } catch (err) {
-      console.error('Quiz error:', err);
+      // console.error('Quiz error:', err);
       
       // Check if it's a content not found error with suggestions
       if (err.suggestions && err.suggestions.length > 0) {
@@ -293,7 +237,7 @@ export default function FriendsQuizLLM() {
       const prompt = generateLLMPrompt(updatedFilters);
       // const response = await fetchQuestions(prompt);
       // CHECK CONTENT NAME AND TYPE
-      let contentName = filters.name;
+      let contentName = updatedFilters.name;
       let contentType = filters.type;
       const is_test = false;
       const response = await fetchQuestions(prompt,modelName,contentName,contentType,is_test);
@@ -328,7 +272,6 @@ export default function FriendsQuizLLM() {
       setSimilarNamesQuiz(false);
       
     } catch (err) {
-      console.error('Quiz error:', err);
       setError(err instanceof Error ? err.message : 'Failed to start quiz');
       setSimilarNamesQuiz(false);
     } finally {
@@ -384,7 +327,6 @@ export default function FriendsQuizLLM() {
       setSimilarNamesQuiz(false);
       
     } catch (err) {
-      console.error('Quiz error:', err);
       setError(err instanceof Error ? err.message : 'Failed to start quiz');
       setSimilarNamesQuiz(false);
     } finally {

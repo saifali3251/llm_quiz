@@ -2,8 +2,6 @@ import {API_KEY } from "../config";
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || "https://genai-endpoints.up.railway.app";
 
-console.log(API_BASE_URL,API_KEY)
-
 export const validateApiKey = async (api_key,model_name) => {
   console.log(api_key,model_name)
   const response = await fetch(`${API_BASE_URL}/validate-api-key`, {
